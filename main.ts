@@ -51,7 +51,10 @@ import { createStore, Store } from 'redux';
 
 // bs.toPromise().then(data => console.log('from promise: ' + data));
 
-// bs.complete();
+// bs.complete(); 
+
+// #1 We need to complete or will never be triggered
+// #2 We need to have a BehaviorSubject or we will not get the data
 
 // console.log('%c -=[END]=-', 'background: #000000; color: #00CC00');
 
