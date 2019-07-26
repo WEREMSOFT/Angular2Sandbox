@@ -1,13 +1,75 @@
-import { Subject, BehaviorSubject, Observable } from 'rxjs/Rx';
-import { createStore, Store } from 'redux';
-
-let arrNum: Array<number> = [1, 2, 3, 4, 5, 6];
-
-setTimeout(() => { console.log('plus start'); arrNum = arrNum.map(x => x + 1), console.log('plus end') }, 0);
-setTimeout(() => { console.log('times start'); arrNum = arrNum.map(x => x * 2), console.log('times end') }, 0);
+// import { Subject, BehaviorSubject, Observable } from 'rxjs/Rx';
+// import { createStore, Store } from 'redux';
 
 
-setTimeout(() => console.log(arrNum), 1000);
+class Cadorna<T> {
+    constructor(public data: T){}
+}
+
+class Cadorna2<T> {
+    constructor(public data: T){}
+}
+
+class Cadorna3<T> {
+    constructor(public data: T){}
+}
+
+class Cadorna4<T> {
+    constructor(public data: T){}
+}
+
+class Cadorna5<T> {
+    constructor(public data: T){}
+}
+
+class Cadorna6<T> {
+    constructor(public data: T){}
+}
+
+class Cadorna7<T> {
+    constructor(public data: T){}
+}
+
+
+// class Test {
+//     a: number = 1;
+//     _b: number = 2;
+
+//     get b(): number {
+//         console.log('calling getter');
+//         return this._b;
+//     }
+// }
+
+// let test2: Test = new Test();
+
+
+
+// console.log(test2);
+// console.log(test2.b);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
