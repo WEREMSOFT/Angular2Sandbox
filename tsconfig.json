@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "system",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "rootDir": "./script-src",
+        "outFile": "./build-ts/tsc.js",
+        "sourceMap": false,
+        "noResolve": true,
+        "listFiles": false,
+        "extendedDiagnostics": true,
+        "traceResolution": false,
+        "skipLibCheck": true
+    },
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

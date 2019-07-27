@@ -13,7 +13,9 @@
     "typescript": "2.3.4"
   },
   "dependencies": {
+    "fs": "0.0.1-security",
     "redux": "^4.0.1",
+    "rimraf": "^2.6.3",
     "rxjs": "^5.0.0"
   }
 }
