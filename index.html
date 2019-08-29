@@ -1,5 +1,82 @@
 <html>
-    <head>
-        <script src="main.js"></script>
-    </head>
+
+<head>
+    <script>
+        function myComponent() {
+        }
+
+        myComponent.prototype = HTMLElement;
+
+        class HelloWorld extends HTMLElement {
+            constructor() {
+                super();
+                this.template = document.createElement('template');
+                this.template.innerHTML = '<h1>hello world ' + this.getAttribute('cadorna') + '</h1><hello-another-world/><slot/>';
+                console.log('hello from constructor');
+                this.attachShadow({
+                    mode: 'open'
+                });
+            }
+
+            connectedCallback() {
+                this.shadowRoot.appendChild(this.template.content);
+                this.template.innerHTML = '<h1>hello world</h1><slot/>';
+            }
+
+            attributeChangedCallback(name, oldValue, newValue){
+                console.log('attribute changed', oldValue, newValue);
+            }
+
+            static get observedAttributes(){
+                return ['cadorna'];
+            }
+
+            setAttributeSafe(attributeName, value){
+                if(this.getAttribute(attributeName) !== value){
+                    console.log('setting attribute from safe');
+                    this.setAttribute(attributeName, value);
+                }
+            }
+        }
+
+        class HelloAnotherWorld extends HTMLElement {
+            constructor() {
+                super();
+                this.template = document.createElement('template');
+                this.template.innerHTML = '<h1>hello ANOTHER world</h1><slot/>';
+                console.log('hello from constructor');
+                this.attachShadow({
+                    mode: 'open'
+                });
+            }
+
+            connectedCallback() {
+                this.shadowRoot.appendChild(this.template.content);
+                console.log('connected callback', this.getAttribute('cadorna'));
+            }
+
+
+        }
+
+        customElements.define('hello-world', HelloWorld);
+        customElements.define('hello-another-world', HelloAnotherWorld);
+
+        function changeAtrribute(){
+            let c = document.getElementById('componente');
+            // c.setAttribute('cadorna', 'lalala');
+            c.setAttributeSafe('cadorna', 'lalla');
+        }
+    </script>
+</head>
+
+<body>
+    <hello-world id="componente" cadorna="sarasa">
+        <h1>I'm different</h1>
+    </hello-world>
+
+    <hello-another-world></hello-another-world>
+    <button onclick="changeAtrribute()">click me</button>
+
+</body>
+
 </html>
