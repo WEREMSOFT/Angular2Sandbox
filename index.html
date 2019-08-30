@@ -1,13 +1,60 @@
 <html>
 
 <head>
-    <script src="main.js"></script>
+    <script>
+        class HelloWorldComponent extends HTMLElement {
+            constructor() {
+                super();
+                this.template = document.createElement('template');
+                this.template.innerHTML = `
+                <style>
+                    :host {
+                        display: block;
+                        background: blue;
+                    }
+                    h1 {
+                        background: red
+                    }
+                </style>
+                <h1>Hello World Begin</h1>
+                    <slot></slot>
+                <h1>Hello World End</h1>
+                `;
+                this.attachShadow({mode: 'open'});
+                console.log('constructing!');
+            }
+
+            connectedCallback(){
+                this.shadowRoot.appendChild(this.template.content);
+                console.log('connected', this.getAttribute('one'));
+            }
+        }
+
+        class HelloAnotherWorldComponent extends HTMLElement {
+            constructor() {
+                super();
+                this.template = document.createElement('template');
+                this.template.innerHTML = `
+                <h2>Hello Another World</h2>
+                `;
+                this.attachShadow({mode: 'open'});
+                console.log('constructing!');
+            }
+
+            connectedCallback(){
+                this.shadowRoot.appendChild(this.template.content);
+                console.log('connected');
+            }
+        }
+
+        customElements.define('hello-world', HelloWorldComponent);
+        customElements.define('hello-another-world', HelloAnotherWorldComponent);
+    </script>
 </head>
 <body>
-    <hello-world one="1">
+    <hello-world one="1-1---">
         <hello-another-world></hello-another-world>
     </hello-world>
-    <h1>This is not blue</h1>
+    <h1>this is not red</h1>
 </body>
-
 </html>
